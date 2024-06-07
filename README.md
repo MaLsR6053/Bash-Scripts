@@ -8,4 +8,6 @@
 
 <b>3. The file_rename script will allow you to rename any file in your system easily.</b>
 
-<b>4. And finally, the update script will perform a standard update, full-upgrade, and autoclean and autoremove functions.</b>
+<b>4. The portscan_basic script will run a quick nmap scan with version detection and ping disabled against a user input IP address.</b>
+
+<b>5. And finally, the update script will perform a standard update, full-upgrade, and autoclean and autoremove functions.</b>
