@@ -34,4 +34,4 @@ echo "Autoremove has finished..."
 echo " "
 echo " "
 sleep 3
-echo "The update has finished, master."
+echo "The update has finished."
