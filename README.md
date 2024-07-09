@@ -10,4 +10,6 @@
 
 <b>4. The portscan_basic script will run a quick nmap scan with version detection and ping disabled against a user input IP address.</b>
 
-<b>5. And finally, the update script will perform a standard update, full-upgrade, and autoclean and autoremove functions.</b>
+<b>5. The update script will perform a standard update, full-upgrade, and autoclean and autoremove functions.</b>
+
+<b>6. The pentest script will create a pentest directory and associated sub_directories and txt files to help facilitate conducting a penetration test. The inspiration and guidance comes from 'R3dy' who's book - "The Art of Network Penetration Testing" is a must-read for any penetration tester.</b>
