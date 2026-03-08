@@ -1,0 +1,32 @@
+#!/bin/bash
+# fix_skew.sh - Sync clock to DC before running NXC/Kerberos commands
+# Usage: fix_skew.sh <DC_IP> [command to run]
+# Example: fix_skew.sh 10.129.7.140 "nxc ldap 10.129.7.140 -u pentest -p 'pass' --bloodhound"
+
+DC_IP="${1}"
+
+if [ -z "$DC_IP" ]; then
+    echo "Usage: $0 <DC_IP> [optional: command to run after sync]"
+    exit 1
+fi
+
+echo "[*] Syncing clock to $DC_IP..."
+
+# Try ntpdate first, fall back to rdate, then net time
+if command -v ntpdate &>/dev/null; then
+    sudo ntpdate -u "$DC_IP" && echo "[+] Clock synced via ntpdate"
+elif command -v rdate &>/dev/null; then
+    sudo rdate -n "$DC_IP" && echo "[+] Clock synced via rdate"
+elif command -v net &>/dev/null; then
+    sudo net time set -S "$DC_IP" && echo "[+] Clock synced via net"
+else
+    echo "[-] No time sync tool found. Install ntpdate: sudo apt install ntpdate"
+    exit 1
+fi
+
+# If a command was passed, run it
+if [ -n "$2" ]; then
+    shift
+    echo "[*] Running: $@"
+    eval "$@"
+fi
